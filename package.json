@@ -1,0 +1,19 @@
+{
+  "name": "book-library",
+  "version": "1.0.0",
+  "description": "This project will contain api related to Management of book library",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev":"nodemon src/app.js"
+  },
+  "keywords": [
+    "library",
+    "book"
+  ],
+  "author": "Nemat Ansari",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.5"
+  }
+}
