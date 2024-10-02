@@ -29,7 +29,7 @@ const UserSchema = new Schema({
   },
   dob: {
     type: Date,
-    require: true,
+    // require: true,
   },
   password: {
     type: String,
@@ -39,4 +39,4 @@ const UserSchema = new Schema({
   
 });
 
-export const user = mongoose.model("user", UserSchema);
+export const UserModal = mongoose.model("user", UserSchema);

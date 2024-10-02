@@ -4,6 +4,9 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 dotenv.config();
+// dotenv.config({
+//   path:"./.env"
+// })
 const app = express();
 app.use(
   cors({
