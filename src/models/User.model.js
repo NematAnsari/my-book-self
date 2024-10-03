@@ -24,7 +24,7 @@ const UserSchema = new Schema({
     type: String, // cloudnary url
     require: true,
   },
-  converImage: {
+  coverImage: {
     type: String, // cloudnary url
   },
   dob: {
