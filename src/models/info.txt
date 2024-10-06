@@ -1,0 +1,17 @@
+login
+register
+profile-update-profile
+add book 
+list of books
+book-details
+logout
+
+
+admin 
+register
+login
+can view user 
+can view books 
+can update and modify books details 
+can add books 
+
