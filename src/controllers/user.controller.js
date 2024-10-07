@@ -95,7 +95,6 @@ const registerUser = async (req, res) => {
     password,
     dob: dob || "",
   });
-  console.log("created insert into database:", user);
 
   const createdUser = await UserModal.findById(user._id).select("-password");
   if (!createdUser) {
@@ -114,8 +113,6 @@ const userLogin = async (req, res) => {
   // password check
   // access and refresh
   // send cookie
-  console.log("........................");
-  console.log("req", req.body);
   const { email, password } = req.body;
 
   if (!email) {
@@ -151,7 +148,6 @@ const userLogin = async (req, res) => {
   const loggedInUser = await UserModal.findById(isUserAvialable._id).select(
     "-password -refreshToken"
   );
-  console.log("loggedInUser", loggedInUser);
   // while sending cookies
   const options = {
     httpOnly: true,
@@ -169,6 +165,30 @@ const userLogin = async (req, res) => {
     });
 };
 
-const logoutUser = async (req, res) => {};
+const logoutUser = async (req, res) => {
+  const _user = await UserModal.findByIdAndUpdate(
+    req.user._id,
+    {
+      $set: {
+        refreshToken: undefined,
+      },
+    },
+    {
+      new: true,
+    }
+  );
+
+  const option = {
+    httpOnly: true,
+    secure: true,
+  };
+  return res
+    .status(200)
+    .clearCookie("accessToken", option)
+    .clearCookie("refreshToken", option)
+    .json({
+      message: "Logout successsfully",
+    });
+};
 
 export { registerUser, userLogin, logoutUser };
