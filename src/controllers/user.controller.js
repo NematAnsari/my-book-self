@@ -191,4 +191,28 @@ const logoutUser = async (req, res) => {
     });
 };
 
-export { registerUser, userLogin, logoutUser };
+const forgotPassword = async(req,res)=>{
+  console.log("req.body",req.body);
+}
+
+const resetPassword = async(req,res)=>{
+  console.log("res",res.body);
+}
+
+const getAllUsers = async(req,res)=>{
+
+  
+  const user = await UserModal.find().select("-password -refreshToken");
+    if(!user){
+    return res.status(401).json({
+      message:"No User found"
+    })}
+
+
+    return res.status(200).json({
+    data:user,
+    message:"Success"
+  })
+}
+
+export { registerUser, userLogin, logoutUser,forgotPassword,resetPassword,getAllUsers };
